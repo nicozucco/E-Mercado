@@ -1,0 +1,10 @@
+[
+    {
+        "nombre": "Suzuki Celerio",
+        "descripcion": "Un auto japones yoquese",
+        "categoria":"Autos",
+        "precio": "15.000 USD",
+        "fotos": "algo",
+        "codigo": "MSO969"
+    }
+]
