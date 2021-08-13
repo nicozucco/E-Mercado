@@ -1,7 +1,7 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
-const products_url = "https://nicozucco.github.io/listado/listado.json";
+const products_url = "https://nicozucco.github.io/E-Mercado/products.json";
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
