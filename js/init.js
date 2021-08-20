@@ -6,6 +6,7 @@ const PRODUCT_INFO_URL = "https://japdevdep.github.io/ecommerce-api/product/5678
 const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/product/5678-comments.json";
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
+const USUARIOS_URL="https://danielk2020.github.io/biblioteca/usuarios.json"
 
 var showSpinner = function(){
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -17,7 +18,7 @@ var hideSpinner = function(){
 
 var getJSONData = function(url){
     var result = {};
-    showSpinner();
+    // showSpinner();
     return fetch(url)
     .then(response => {
       if (response.ok) {
@@ -29,13 +30,13 @@ var getJSONData = function(url){
     .then(function(response) {
           result.status = 'ok';
           result.data = response;
-          hideSpinner();
+          // hideSpinner();
           return result;
     })
     .catch(function(error) {
         result.status = 'error';
         result.data = error;
-        hideSpinner();
+        // hideSpinner();
         return result;
     });
 }

@@ -139,3 +139,14 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.autoimagen{
+  display: flex;
+  height: 200px;
+  justify-content: center;
+}
+
+.invalid{
+  background-color: crimson;
+  color: antiquewhite;
+}

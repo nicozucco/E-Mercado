@@ -1,36 +1,27 @@
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
-const products_url = "https://nicozucco.github.io/E-Mercado/products.json";
+var autosArray = [];
+
+function showAutos(array){
+
+  let contenido = "<br><hr><br>";
+  for (let i = 0; i < array.length; i++){
+    let auto = array[i];
+
+    contenido += 'Producto: ' + auto.name + '<br>';
+    contenido += 'Precio: ' + auto.currency +' '+ auto.cost + '<br>';
+    contenido += 'Descripción: ' + auto.description + '<br>';
+    contenido += '<div class="autoimagen"><img src=' + auto.imgSrc + '></div><br>';
+    contenido += '<br><hr><br>'
+  }
+  document.getElementById("productos").innerHTML = contenido;
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
-    document.getElementById("data").innerHTML = "";
+  getJSONData(PRODUCTS_URL).then(function (resultado) {
+    if (resultado.status === "ok"){
+      autosArray = resultado.data;
 
-    fetch(products_url)
-
-        .then(respuesta => respuesta.json())
-
-        .then(datos => {
-
-            datos.forEach(datos => {
-
-                let row = "";
-                row = `
-                <tr>
-                    <td> ` + datos.nombre + ` </td>
-                    <td> ` + datos.descripcion + ` </td>
-                    <td> ` + datos.categoria + `</td>
-                    <td> ` + datos.precio + `</td>
-                    <td> ` + datos.fotos + `</td>
-                    <td> ` + datos.codigo + `</td>
-                </tr>
-                `;
-
-                document.getElementById("data").innerHTML += row;
-            });
-        })
-
-        .catch(error => alert("Hubo un error: " + error));
-
+      showAutos(autosArray);
+    }
+  });
 });
