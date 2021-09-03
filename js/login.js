@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     usersArray = resultado.data;
 
                     if (validateUser(usersArray, inputEmail.value, inputPassword.value)) {
+                        
+                        // LOCAL STORAGE
+                        localStorage.setItem('User-Logged', JSON.stringify({email: inputEmail.value}));
+                        
                         window.location = 'inicio.html';
                     } else {
                         alert("Usuario o contraseña incorrectas");
