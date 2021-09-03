@@ -29,13 +29,12 @@
       </div>
     </div>
   </nav><br>
-  <div class="container">
-    <h2>Productos</h2>
+  <div class="text-center" id="productstitle">
+    <h2 >Productos</h2>
     <p>Estos son los productos a la venta</p>
   </div>
-  <hr>
-  <div class="container">
-    <div>Ordenar
+  <div class="cont">
+    <div class="col text-right">Ordenar
       <button class="sortbutton" id="sortAsc">
         <img src="img/arrow_up.png" title="Ascendente">
       </button>
@@ -45,15 +44,14 @@
       <button class="sortbutton" id="relevance">
         <img src="img/graph.png" title="Relevancia">
       </button>
-    </div>
-    <hr>
-    <div>
-      Precio:<br>
-      <input class="priceinput" type="number" min="0" placeholder="Min" id="priceMin">
+    </div><br>
+     <div class="col text-right">
+      Precio: <input class="priceinput" type="number" min="0" placeholder="Min" id="priceMin">
       <input class="priceinput" type="number" placeholder="Max" id="priceMax">
       <button class="sortbutton" id="filter">Filtrar</button>
       <button class="sortbutton" id="clean">Limpiar</button>
     </div>
+  </div>
   </div>
   <div id="productos" class="text-center"></div>
 
