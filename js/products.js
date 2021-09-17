@@ -3,6 +3,13 @@ var autosArray = [];
 var minPrice;
 var maxPrice;
 
+// El botón que lleva al articulo especifico
+function showDetails(id){
+    localStorage.setItem('auto', JSON.stringify({autoId: id}));
+    window.location = 'product-info.html';
+}
+
+// Funcion para mostrar los autos
 function showAutos(array) {
 
     let contenido = "<br><hr><br>";
@@ -16,6 +23,7 @@ function showAutos(array) {
             contenido += 'Precio: ' + auto.currency + ' ' + auto.cost + '<br>';
             contenido += 'Descripción: ' + auto.description + '<br>';
             contenido += '<div class="autoimagen"><img src=' + auto.imgSrc + '></div><br>';
+            contenido +='<button onclick="showDetails(' + auto.id + ')">Detalles</button><br>';
             contenido += 'Vendidos: ' + auto.soldCount + '<br>';
             contenido += '<br><hr><br>';
         }

@@ -13,6 +13,8 @@
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -26,38 +28,78 @@
       <div id="info-user" style='display: none;'>
         <p id="user"></p>
         <button id="salir" style="display: none;">Salir</button>
-        </div>
+      </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 3 (Fecha de entrega: 19/09/2021) y Entrega 4 (Fecha de entrega: 03/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="container">
+    <div id="detalles"></div>
+    <div id="imagenes"></div><br>
+    <a href="products.html">Volver a Productos</a>
+    <hr>
+<h4 class="text-center">Comentarios</h4><hr>
+    <div class="container" id="comments"></div>
+
+    <div>
+    <p>Deje su Comentario</p>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="username" placeholder="Nombre">
+      </div>
+      <div class="form-floating">
+        <textarea class="form-control mb-2" placeholder="Comentario" id="usercomment"></textarea>
+      </div>
+        <div>
+          <span>Calificación:</span>
+          <div class="star-rating">
+            <input id="star-5" type="radio" name="rating" value="5"  />
+            <label for="star-5" title="5 stars">
+              <i class="active fa fa-star"></i>
+            </label>
+      
+            <input id="star-4" type="radio" name="rating" value="4"/>
+            <label for="star-4" title="4 stars">
+              <i class="active fa fa-star"></i>
+            </label>
+      
+            <input id="star-3" type="radio" name="rating" value="3"/>
+            <label for="star-3" title="3 stars">
+              <i class="active fa fa-star"></i>
+            </label>
+      
+            <input id="star-2" type="radio" name="rating" value="2" />
+            <label for="star-2" title="2 stars">
+              <i class="active fa fa-star"></i>
+            </label>
+      
+            <input id="star-1" type="radio" name="rating" value="1" checked/>
+            <label for="star-1" title="1 star">
+              <i class="active fa fa-star"></i>
+            </label>
+            
+          </div>
+          <br>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="commentBox();">Enviar</button>
+      </form>
     </div>
-  </div>
-  <footer class="text-muted">
-    <div class="container">
-      <p class="float-right">
-        <a href="#">Volver arriba</a>
-      </p>
-      <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
-      <p>Clickea <a target="_blank" href="Letra.pdf">aquí</a> para descargar la letra del obligatorio.</p>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p>EMercado es un proyecto para el curso de JaP 2021</p>
+        <a href="#">Volver Arriba</a>
+      </div>
+    </footer>
+    <div id="spinner-wrapper">
+      <div class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-  </footer>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
-  <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/init.js"></script>
-  <script src="js/product-info.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/init.js"></script>
+    <script src="js/product-info.js"></script>
 </body>
 
 </html>
