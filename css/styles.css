@@ -154,7 +154,7 @@ a.custom-card:hover {
   color: antiquewhite;
 }
 
-#info-user {
+/* #info-user {
   background-color: cadetblue;
   color: aliceblue;
   padding-top: 5px;
@@ -174,7 +174,7 @@ a.custom-card:hover {
   margin-bottom: 5px;
   background-color: gray;
   color: aliceblue;
-}
+} */
 
 .sortbutton {
   background-color: #414346;
@@ -214,4 +214,9 @@ a.custom-card:hover {
 .star-rating label:hover ~ label,
 .star-rating input[type=radio]:checked ~ label {
   color: #ffbf00
+}
+
+.carousel-control-next, .carousel-control-prev {
+  position: absolute;
+  width: 55%;
 }

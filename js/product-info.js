@@ -19,11 +19,31 @@ function showAuto(car) {
                 `;
 
     imgs += `
-                <img class="img" src="img/prod${car.id}_1.jpg" width="200px" height="200px" alt="">
-                <img class="img" src="img/prod${car.id}_2.jpg" width="200px" height="200px" alt="">
-                <img class="img" src="img/prod${car.id}_3.jpg" width="200px" height="200px" alt="">
-                <img class="img" src="img/prod${car.id}_4.jpg" width="200px" height="200px" alt="">
-                `;
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="img/prod${car.id}_1.jpg" class="d-block w-50 mx-auto" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/prod${car.id}_2.jpg" class="d-block w-50 mx-auto" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/prod${car.id}_3.jpg" class="d-block w-50 mx-auto" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="img/prod${car.id}_4.jpg" class="d-block w-50 mx-auto" alt="...">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+`;
 
     document.getElementById("detalles").innerHTML = details;
     document.getElementById("imagenes").innerHTML = imgs;
@@ -32,7 +52,7 @@ function showAuto(car) {
 // Llamado a la función según el auto que sea para INFO_URL
 document.addEventListener("DOMContentLoaded", function (e) {
     getJSONData(INFO_URL).then(function (result) {
-        if (result.status === "ok"){
+        if (result.status === "ok") {
             auto = result.data;
             showAuto(auto);
         }
@@ -89,3 +109,5 @@ function showRating(score) {
 
     return starsRating;
 }
+
+// Productos relacionados

@@ -38,9 +38,7 @@ var getJSONData = function (url) {
     });
 }
 
-//Función que se ejecuta una vez que se haya lanzado el evento de
-//que el documento se encuentra cargado, es decir, se encuentran todos los
-//elementos HTML presentes.
+// Funcion de Login
 
 document.addEventListener("DOMContentLoaded", function (e) {
 
@@ -51,9 +49,9 @@ document.addEventListener("DOMContentLoaded", function (e) {
 
   if (userLogged) {
     userLogged = JSON.parse(userLogged);
-    user.innerText = user.innerText + 'Usuario: ' + userLogged.email;
+    user.innerText = userLogged.email;
     infouser.style = 'display: inline-block';
-    salir.style = 'display: flex';
+    salir.style = 'display: inline-block';
   }
 
   if (document.getElementById("salir")) {
@@ -64,3 +62,5 @@ document.addEventListener("DOMContentLoaded", function (e) {
   }
 
 });
+
+// Dropdown del login
