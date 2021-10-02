@@ -1,13 +1,14 @@
 var auto;
+var autosarray = [];
 var INFO_URL = "https://nicozucco.github.io/json-mercado/" + JSON.parse(localStorage.getItem('auto')).autoId + ".json"
 
 // Muestra los detalles de un producto en específico
 function showAuto(car) {
 
-    let details = "";
-    let imgs = "";
+  let details = "";
+  let imgs = "";
 
-    details += `
+  details += `
                 <h2> ${car.name} </h2>
                 ${car.description} <br><br>
                 <b>Precio:</b>
@@ -18,7 +19,7 @@ function showAuto(car) {
                 ${car.category} <br>
                 `;
 
-    imgs += `
+  imgs += `
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -45,27 +46,17 @@ function showAuto(car) {
 </div>
 `;
 
-    document.getElementById("detalles").innerHTML = details;
-    document.getElementById("imagenes").innerHTML = imgs;
+  document.getElementById("detalles").innerHTML = details;
+  document.getElementById("imagenes").innerHTML = imgs;
 }
-
-// Llamado a la función según el auto que sea para INFO_URL
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(INFO_URL).then(function (result) {
-        if (result.status === "ok") {
-            auto = result.data;
-            showAuto(auto);
-        }
-    });
-});
 
 // Funcion para cargar comentarios
 var comentario
 
 function loadComments(comentario) {
-    let comments = "";
+  let comments = "";
 
-    comments += `
+  comments += `
                 <div class="row">
                 <div class="col-3 mb-2"><b>Usuario:</b>${comentario.user}</div>
                 <div class="col-3 mb-2">${comentario.dateTime}</div>
@@ -76,38 +67,74 @@ function loadComments(comentario) {
                 <div class="row">
                 <div class="col-4"><b>Calificación:</b>
                 `
-        + showRating(comentario.score) +
-        `
+    + showRating(comentario.score) +
+    `
                 </div>
                 </div>
                 <hr>
                 `;
-    document.getElementById("comments").innerHTML += comments;
+  document.getElementById("comments").innerHTML += comments;
 };
-
-// Llamado a la función
-document.addEventListener("DOMContentLoaded", function (e) {
-    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
-        if (result.status === "ok") {
-            result.data.forEach(comentario => {
-                loadComments(comentario);
-            });
-        }
-    });
-});
 
 // Mostrar Estrellitas
 function showRating(score) {
-    starsRating = "";
+  starsRating = "";
 
-    for (y = 0; y < score; y++) {
-        starsRating += `<i class="fa fa-star checked"></i>`
-    }
-    for (x = 0; x < (5 - score); x++) {
-        starsRating += `<i class="fa fa-star"></i>`
-    }
+  for (y = 0; y < score; y++) {
+    starsRating += `<i class="fa fa-star checked"></i>`
+  }
+  for (x = 0; x < (5 - score); x++) {
+    starsRating += `<i class="fa fa-star"></i>`
+  }
 
-    return starsRating;
+  return starsRating;
 }
 
 // Productos relacionados
+function loadRelated(arraylistado, arrayrelacionado) {
+  let contenido = '<div class="row">';
+
+  arrayrelacionado.forEach(function (indice) {
+    contenido += `
+<div class="col-sm-4">
+    <a href="javascript:showDetails(${[indice + 1]})">
+      <div class="card" style="width: 18rem;">
+        <img src="${arraylistado[indice].imgSrc}" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body">
+      <p class="card-text">${arraylistado[indice].name}</p>
+    </div>
+  </div>
+</div>
+`
+  });
+
+  document.getElementById("related").innerHTML = contenido
+}
+
+
+// Add Event Listener Encadenados
+document.addEventListener("DOMContentLoaded", function (e) {
+  // Llamado a la función según el auto que sea para INFO_URL
+  getJSONData(INFO_URL).then(function (result) {
+    if (result.status === "ok") {
+      auto = result.data;
+      showAuto(auto);
+    }
+    // Llamado a la función de comentarios
+    getJSONData(PRODUCT_INFO_COMMENTS_URL).then(function (result) {
+      if (result.status === "ok") {
+        result.data.forEach(comentario => {
+          loadComments(comentario);
+        });
+      }
+      // Llamado a la función de productos relacionados
+      getJSONData(PRODUCTS_URL).then(function (result) {
+        if (result.status === "ok") {
+          autosarray = result.data;
+          loadRelated(autosarray, auto.relatedProducts);
+        }
+      });
+    });
+  });
+});

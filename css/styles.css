@@ -154,27 +154,6 @@ a.custom-card:hover {
   color: antiquewhite;
 }
 
-/* #info-user {
-  background-color: cadetblue;
-  color: aliceblue;
-  padding-top: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 10px;
-}
-
-#user{
-  margin-bottom: 0px;
-}
-
-#salir {
-  width: 50px;
-  height: 30px;
-  margin-left: 75%;
-  margin-bottom: 5px;
-  background-color: gray;
-  color: aliceblue;
-} */
 
 .sortbutton {
   background-color: #414346;
@@ -190,6 +169,7 @@ a.custom-card:hover {
   margin-left: 150px;
   margin-right: 150px;
   border-radius: 20px;
+  margin-top: 20px;
 }
 
 /* Estrellitas */
