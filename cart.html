@@ -11,23 +11,6 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
@@ -50,32 +33,78 @@
           <a class="dropdown-item" id="salir" href="index.html">Salir</a>
         </div>
       </div>
-
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <div class="text-center p-1">
+    <h2>Carrito</h2>
+    <p class="lead">Aqui están tus productos seleccionados.</p>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-3 border">Articulo</div>
+      <div class="col-2 border">Precio</div>
+      <div class="col-2 border">Cantidad</div>
+      <div class="col-2 border">Subtotal en UYU</div>
+      <div class="col-1"></div>
     </div>
   </div>
-  <div id="spinner-wrapper">
-    <div class="lds-ring">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+  <div class="container" id="carrito"></div>
+  <div class="container">
+    <div class="row py-3">
+      <div class="col-7"></div>
+      <div class="col-2 border">Total en UYU</div>
+      <div class="col-2 border" id="total"></div>
+      <div class="col-1"></div>
     </div>
   </div>
+
+  <h3 class="text-center">Envio</h3>
+  <div style="width:400px" class="container">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">País</label>
+    </div>
+    <select class="custom-select">
+      <option selected>Seleccione su país</option>
+      <option value="1">Argentina</option>
+      <option value="2">Brasil</option>
+      <option value="3">Uruguay</option>
+    </select>
+  </div>
+
+  <div class="form-floating mb-3">
+    <input type="text" class="form-control" placeholder="Dirección">
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text" for="inputGroupSelect01">Envío</label>
+    </div>
+    <select class="custom-select">
+      <option selected>Seleccione su tipo de envío</option>
+      <option value="1">Premium</option>
+      <option value="2">Express</option>
+      <option value="3">Standard</option>
+    </select>
+  </div>
+
+  <button type="button" class="btn btn-primary btn-block mb-3">Confirmar</button>
+</div>
+
+  <footer class="text-muted bg-light">
+    <div class="container">
+      <p>EMercado es un proyecto para el curso de JaP 2021</p>
+      <a href="#">Volver Arriba</a>
+    </div>
+  </footer>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/dropzone.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
 </body>
-
-<!-- COMENTARIO -->
 
 </html>
