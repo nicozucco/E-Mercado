@@ -38,7 +38,7 @@
   <div class="text-center p-1">
     <h2>Productos</h2>
     <p class="lead">Estos son los productos a la venta.</p>
-</div>
+  </div>
   <div class="cont">
     <div class="col text-right">Ordenar
       <button class="sortbutton" id="sortAsc">
@@ -51,7 +51,7 @@
         <img src="img/graph.png" title="Relevancia">
       </button>
     </div><br>
-     <div class="col text-right">
+    <div class="col text-right">
       Precio: <input class="priceinput" type="number" min="0" placeholder="Min" id="priceMin">
       <input class="priceinput" type="number" placeholder="Max" id="priceMax">
       <button class="sortbutton" id="filter">Filtrar</button>
@@ -59,7 +59,11 @@
     </div>
   </div>
   </div>
-  <div id="productos" class="text-center"></div>
+
+  <div class="album py-5 bg-light">
+    <div class="row justify-content-center" id="productos">
+    </div>
+  </div>
 
   <footer class="text-muted bg-light">
     <div class="container">

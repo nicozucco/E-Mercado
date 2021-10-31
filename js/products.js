@@ -12,20 +12,29 @@ function showDetails(id){
 // Funcion para mostrar los autos
 function showAutos(array) {
 
-    let contenido = "<br><hr><br>";
+    let contenido = "";
     for (let i = 0; i < array.length; i++) {
         let auto = array[i];
 
         if (((minPrice == undefined) || (minPrice != undefined && parseInt(auto.cost) >= minPrice)) &&
             ((maxPrice == undefined) || (maxPrice != undefined && parseInt(auto.cost) <= maxPrice))) {
 
-            contenido += 'Producto: ' + auto.name + '<br>';
-            contenido += 'Precio: ' + auto.currency + ' ' + auto.cost + '<br>';
-            contenido += 'Descripción: ' + auto.description + '<br>';
-            contenido += '<div class="autoimagen"><img src=' + auto.imgSrc + '></div><br>';
-            contenido +='<button onclick="showDetails(' + auto.id + ')">Detalles</button><br>';
-            contenido += 'Vendidos: ' + auto.soldCount + '<br>';
-            contenido += '<br><hr><br>';
+            contenido +=`
+            <div class="card col-sm-6 col-md-4 col-lg-3 col-xl-2 bg-light rounded mb-3 ml-1">
+            <a onclick="showDetails(${auto.id})" class="my-3 shadow-sm custom-card">
+              <img class="bd-placeholder-img card-img-top"
+                src="${auto.imgSrc}">
+            </a>
+            <h3 class="m-3">${auto.name}</h3>
+            <div class="card-body">
+              <p class="card-text">${auto.description}
+                <br>
+                ${auto.currency} ${auto.cost}
+              </p>
+                <small class="text-muted">${auto.soldCount} vendidos</small>
+            </div>
+          </div>
+            `       
         }
     }
     document.getElementById("productos").innerHTML = contenido;
