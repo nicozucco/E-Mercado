@@ -61,38 +61,166 @@
     </div>
   </div>
 
-  <h3 class="text-center">Envio</h3>
-  <div style="width:400px" class="container">
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">País</label>
-    </div>
-    <select class="custom-select">
-      <option selected>Seleccione su país</option>
-      <option value="1">Argentina</option>
-      <option value="2">Brasil</option>
-      <option value="3">Uruguay</option>
-    </select>
-  </div>
+  <div class="container">
+    <form class="needs-validation" novalidate>
+      <div class="form-row">
+        <!-- Datos del Envio -->
+        <div class="col-6 p-3 border rounded">
+          <h3>Dirección</h3>
+          <label for="validationCustom00">Pais</label>
+          <input type="text" class="form-control" id="validationCustom00" required>
+          <div class="invalid-feedback">
+            Completa este campo.
+          </div>
+          <label for="validationCustom01">Calle</label>
+          <input type="text" class="form-control" id="validationCustom01" required>
+          <div class="invalid-feedback">
+            Completa este campo.
+          </div>
+          <label for="validationCustom02">Número</label>
+          <input type="text" class="form-control" id="validationCustom02" required>
+          <div class="invalid-feedback">
+            Completa este campo.
+          </div>
+          <label for="validationCustom03">Esquina</label>
+          <input type="text" class="form-control" id="validationCustom03" required>
+          <div class="invalid-feedback">
+            Completa este campo.
+          </div>
+        </div>
+        <!-- Tipo de Envio -->
+        <div class="col-6 p-3 border rounded">
+          <h3>Tipo de envío</h3>
+          <div class="custom-control custom-radio mt-3">
+            <input type="radio" name="shippingtype" class="custom-control-input" checked required id="validationRadio01"
+              onclick="cambiarporcentaje(0.15)">
+            <label class="custom-control-label" for="validationRadio01">Premium 2 a 5 días (15%)</label>
+          </div>
+          <div class="custom-control custom-radio mt-3">
+            <input type="radio" name="shippingtype" class="custom-control-input" required id="validationRadio02"
+              onclick="cambiarporcentaje(0.07)">
+            <label class="custom-control-label" for="validationRadio02">Express 5 a 8 días (7%)</label>
+          </div>
+          <div class="custom-control custom-radio mt-3">
+            <input type="radio" name="shippingtype" class="custom-control-input" required id="validationRadio03"
+              onclick="cambiarporcentaje(0.05)">
+            <label class="custom-control-label" for="validationRadio03">Standard 12 a 15 días (5%)</label>
+          </div>
+        </div>
 
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" placeholder="Dirección">
-  </div>
+        <!-- Costos -->
+        <div class="col-6 p-3 border rounded">
+          <h3>Costos</h3>
+          <div class="container">
+            <div class="row">
+              <div class="col-9 pt-2">
+                <h6 class="font-weight-bold">Subtotal</h6>
+                <small>Costo de los productos.</small>
+              </div>
+              <div class="col-3">
+                <p class="text-right" id="totalsinenvio"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-9 pt-2">
+                <h6 class="font-weight-bold">Envío</h6>
+                <small>Costo del envío seleccionado.</small>
+              </div>
+              <div class="col-3">
+                <p class="text-right" id="costoenvio"></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-9 pt-2">
+                <h6 class="font-weight-bold">Total</h6>
+              </div>
+              <div class="col-3">
+                <p class="text-right" id="totalconenvio"></p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <label class="input-group-text" for="inputGroupSelect01">Envío</label>
-    </div>
-    <select class="custom-select">
-      <option selected>Seleccione su tipo de envío</option>
-      <option value="1">Premium</option>
-      <option value="2">Express</option>
-      <option value="3">Standard</option>
-    </select>
-  </div>
+        <!-- Forma de Pago -->
+        <div class="col-6 p-3 border rounded">
+          <h3>Forma de Pago</h3>
 
-  <button type="button" class="btn btn-primary btn-block mb-3">Confirmar</button>
-</div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Seleccionar
+          </button>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Forma de Pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div class="container">
+                  <div class="row">
+                    <div class="custom-control custom-radio mt-3">
+                      <input type="radio" name="paytype" class="custom-control-input" id="validationPay01"
+                        onclick="paymethod()">
+                      <label class="custom-control-label" for="validationPay01">Tarjeta de Crédito</label>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-6">
+                      <label for="cardnumber">Número de tarjeta</label>
+                      <input type="text" class="form-control" id="cardnumber" required>
+                      <div class="invalid-feedback">
+                        Completa este campo.
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <label for="cardvalid">Vencimiento</label>
+                      <input type="text" class="form-control" id="cardvalid" required>
+                      <div class="invalid-feedback">
+                        Completa este campo.
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="custom-control custom-radio mt-3">
+                      <input type="radio" name="paytype" class="custom-control-input" id="validationPay02"
+                        onclick="paymethod()">
+                      <label class="custom-control-label" for="validationPay02">Transferencia Bancaria</label>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-6 pb-3">
+                      <label for="bankaccount">Número de Cuenta</label>
+                      <input type="text" class="form-control" id="bankaccount" required>
+                      <div class="invalid-feedback">
+                        Completa este campo.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  <div class="col-12 pb-3 text-center">
+    <button class="btn btn-primary mt-3 align-center" type="submit">Finalizar Compra</button>
+  </div>
+  </form>
+  </div>
 
   <footer class="text-muted bg-light">
     <div class="container">
